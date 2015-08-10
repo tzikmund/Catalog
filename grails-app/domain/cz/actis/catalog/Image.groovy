@@ -4,8 +4,8 @@ class Image {
     String fileName
     String fullPath
     byte[] file
-    static hasMany = [items: Item]
-    static belongsTo = [Item]
+    static belongsTo = [item: Item]
+    //Item item
 
     static constraints = {
         fileName nullable: false

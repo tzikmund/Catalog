@@ -14,12 +14,12 @@ class ImageController {
         params.max = Math.min(max ?: 10, 100)
         respond Image.list(params), model:[imageInstanceCount: Image.count()]
     }
-
     def showImage(Image imageInstance)
     {
         response.outputStream << imageInstance.file
         response.outputStream.flush()
     }
+
     def show(Image imageInstance) {
         respond imageInstance
     }
@@ -39,6 +39,7 @@ class ImageController {
             respond imageInstance.errors, view:'create'
             return
         }
+
         imageInstance.save flush:true
 
         request.withFormat {
@@ -72,11 +73,9 @@ class ImageController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Image.label', default: 'Image'), imageInstance.id])
-                //redirect imageInstance
-                redirect(controller: "item", action: "index")
+                redirect imageInstance
             }
-            '*'{ respond imageInstance, [status: OK]
-            }
+            '*'{ respond imageInstance, [status: OK] }
         }
     }
 

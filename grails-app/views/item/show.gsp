@@ -59,23 +59,21 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${itemInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label"><g:message code="item.image.label" default="Image" /></span>
+					
+						<span class="property-value" aria-labelledby="image-label"><g:link controller="image" action="show" id="${itemInstance?.image?.id}">${itemInstance?.image?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${itemInstance?.categories}">
 				<li class="fieldcontain">
 					<span id="categories-label" class="property-label"><g:message code="item.categories.label" default="Categories" /></span>
 					
 						<g:each in="${itemInstance.categories}" var="c">
 						<span class="property-value" aria-labelledby="categories-label"><g:link controller="category" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.images}">
-				<li class="fieldcontain">
-					<span id="images-label" class="property-label"><g:message code="item.images.label" default="Images" /></span>
-					
-						<g:each in="${itemInstance.images}" var="i">
-						<span class="property-value" aria-labelledby="images-label"><g:link controller="image" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

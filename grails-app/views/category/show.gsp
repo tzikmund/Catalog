@@ -19,6 +19,7 @@
                 <li><g:link controller="category" action="index">Správce kategorií</g:link></li>
                 <li><g:link controller="category" action="create">Nová kategorie</g:link></li>
                 <li><g:link controller="item" action="create">Nový produkt</g:link></li>
+                <li><g:link controller="item" action="index">Všechny produkty</g:link></li>
                 <g:each in="${categories}" var="category">
                     <li><g:link controller="category" action="show" id="${category.id}">${category.name}</g:link></li>
                 </g:each>

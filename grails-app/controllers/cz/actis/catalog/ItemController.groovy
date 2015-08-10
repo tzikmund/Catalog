@@ -21,7 +21,6 @@ class ItemController {
         return [items: items, categories: categories]
     }
 
-
     def show(Item itemInstance) {
         respond itemInstance
     }
@@ -41,6 +40,7 @@ class ItemController {
             respond itemInstance.errors, view:'create'
             return
         }
+
         def file = request.getFile('file')
         String fn = file.originalFilename
         if(fn.empty || fn.equals("")) {
@@ -56,8 +56,8 @@ class ItemController {
             img.fileName = file.originalFilename
             img.fullPath = pathsService.getImageUploadPath() + file.originalFilename
             img.file = file.getBytes()
-            img.addToItems(itemInstance)
-            file.transferTo(new File(img.fullPath))
+            itemInstance.image = img
+            //file.transferTo(new File(img.fullPath))
             def ic = new ImageController()
             ic.save(img)
             itemInstance.save flush: true
@@ -67,7 +67,6 @@ class ItemController {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])
                 //redirect itemInstance
-                //redirect(controller: "item", action: "index")
             }
             '*' { respond itemInstance, [status: CREATED] }
         }

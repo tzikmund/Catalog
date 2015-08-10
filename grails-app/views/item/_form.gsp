@@ -1,6 +1,7 @@
 <%@ page import="cz.actis.catalog.Item" %>
 
 
+
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'brand', 'error')} required">
 	<label for="brand">
 		<g:message code="item.brand.label" default="Brand" />
@@ -37,6 +38,14 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'image', 'error')} required">
+	<label for="image">
+		<g:message code="item.image.label" default="Image" />
+		<span class="required-indicator">*</span>
+	</label>
+    <input type="file" name="file"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'categories', 'error')} ">
 	<label for="categories">
 		<g:message code="item.categories.label" default="Categories" />
@@ -44,20 +53,5 @@
 	</label>
 	<g:select name="categories" from="${cz.actis.catalog.Category.list()}" multiple="multiple" optionKey="id" size="5" value="${itemInstance?.categories*.id}" class="many-to-many"/>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'images', 'error')} ">
-	%{--<label for="images">
-		<g:message code="item.images.label" default="Images" />
-		
-	</label>
-	<g:select name="images" from="${cz.actis.catalog.Image.list()}" multiple="multiple" optionKey="id" size="5" value="${itemInstance?.images*.id}" class="many-to-many"/>--}%
-    <fieldset class="form">
-    <label for="images">
-        <g:message code="item.images.label" default="Image" />
-
-    </label>
-        <input type="file" name="file" />
-    </fieldset>
 </div>
 

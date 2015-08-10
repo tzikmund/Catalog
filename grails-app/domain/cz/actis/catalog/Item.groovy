@@ -6,12 +6,15 @@ class Item {
     String description
     double price
 
-    static hasMany = [categories: Category, images: Image]
+    static hasMany = [categories: Category]
+    static hasOne = [image: Image]
+    //Image image
 
     static constraints = {
         brand nullable: false
         name nullable: false
         description nullable: false, maxSize: 255
         price min: 0d
+        //categories nullable: false
     }
 }

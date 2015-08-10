@@ -29,3 +29,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: imageInstance, field: 'item', 'error')} required">
+	<label for="item">
+		<g:message code="image.item.label" default="Item" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="item" name="item.id" from="${cz.actis.catalog.Item.list()}" optionKey="id" required="" value="${imageInstance?.item?.id}" class="many-to-one"/>
+
+</div>
+

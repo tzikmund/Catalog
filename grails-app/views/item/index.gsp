@@ -1,3 +1,4 @@
+
 <%@ page import="cz.actis.catalog.Item" %>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,7 @@
             <li><g:link controller="category" action="index">Správce kategorií</g:link></li>
             <li><g:link controller="category" action="create">Nová kategorie</g:link></li>
             <li><g:link controller="item" action="create">Nový produkt</g:link></li>
+            <li><g:link controller="item" action="index">Všechny produkty</g:link></li>
             <g:each in="${categories}" var="category">
                 <li><g:link controller="category" action="show" id="${category.id}">${category.name}</g:link></li>
             </g:each>
@@ -27,9 +29,9 @@
     <div class="itemList">
         <g:each in="${items}" var="item">
             <div class="item">
-                <g:each in="${item.images}" var="img">
-                    <g:link controller="image" action="showImage" id="${img.id}"><g:img style="width: 200px; height: 150px;" file="${img.fileName}"/></g:link>
-                </g:each>
+                %{--<g:each in="${item.images}" var="img">--}%
+                <g:link controller="image" action="showImage" id="${item.image.id}"><g:img style="width: 200px; height: 150px;" file="${item.image.fileName}"/></g:link>
+                %{--</g:each>--}%
                 <h2>Název: ${item.name}</h2>
                 <h3>Značka: ${item.brand}</h3>
                 <p>Popis: ${item.description}</p>

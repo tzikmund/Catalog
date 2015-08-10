@@ -1,4 +1,3 @@
-<%@ page import="cz.actis.catalog.Image" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,22 +25,14 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			%{--<g:form url="[resource:itemInstance, action:'save']" enctype="multipart/form-data">
+			<g:form url="[resource:itemInstance, action:'save']" enctype="multipart/form-data">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
-			</g:form>--}%
-            <g:form url="[resource:imageInstance, action:'save']" enctype="multipart/form-data">
-                <fieldset class="form">
-                    <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
-            </g:form>
+			</g:form>
 		</div>
 	</body>
 </html>

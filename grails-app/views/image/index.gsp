@@ -28,6 +28,10 @@
 					
 						<g:sortableColumn property="fullPath" title="${message(code: 'image.fullPath.label', default: 'Full Path')}" />
 					
+						<g:sortableColumn property="file" title="${message(code: 'image.file.label', default: 'File')}" />
+					
+						<th><g:message code="image.item.label" default="Item" /></th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -37,7 +41,10 @@
 						<td><g:link action="show" id="${imageInstance.id}">${fieldValue(bean: imageInstance, field: "fileName")}</g:link></td>
 					
 						<td>${fieldValue(bean: imageInstance, field: "fullPath")}</td>
-
+					
+						<td>${fieldValue(bean: imageInstance, field: "file")}</td>
+					
+						<td>${fieldValue(bean: imageInstance, field: "item")}</td>
 					
 					</tr>
 				</g:each>

@@ -48,6 +48,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${imageInstance?.item}">
+				<li class="fieldcontain">
+					<span id="item-label" class="property-label"><g:message code="image.item.label" default="Item" /></span>
+					
+						<span class="property-value" aria-labelledby="item-label"><g:link controller="item" action="show" id="${imageInstance?.item?.id}">${imageInstance?.item?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:imageInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
