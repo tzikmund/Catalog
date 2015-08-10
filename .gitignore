@@ -1,0 +1,9 @@
+target
+out
+*.iml
+.project
+.idea
+.classpath
+WEB-INF/classes
+wrapper
+grailsw*

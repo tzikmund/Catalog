@@ -22,9 +22,11 @@ class PathsService {
         }
     }
 
+
     def String getImageUploadPath()
     {
         String path = getSystemRootPath() + 'Users' + File.separator + 'zikyt' + File.separator  + 'IdeaProjects' + File.separator + 'Catalog' + File.separator + 'web-app' + File.separator + 'images'
+        //TODO otestovat zda EXISTUJE cilovy adresar a pripadne ho vytvorit... taky delame v MK Market
         return addSeparator(path)
     }
 }

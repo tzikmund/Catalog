@@ -14,6 +14,7 @@
     <h1>Katalog</h1>
     <div class="categoryList">
         <ul>
+            %{--TODO prestylovat--}%
             <h5>Kategorie</h5>
             <li><g:link controller="category" action="index">Správce kategorií</g:link></li>
             <li><g:link controller="category" action="create">Nová kategorie</g:link></li>
