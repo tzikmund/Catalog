@@ -1,6 +1,7 @@
 package cz.actis.catalog
 
 class Item {
+
     String brand
     String name
     String description

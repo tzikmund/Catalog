@@ -9,6 +9,7 @@ class User {
     String address
     String city
     String zipCode
+
     static constraints = {
         loginName nullable: false
         pwd nullable: false

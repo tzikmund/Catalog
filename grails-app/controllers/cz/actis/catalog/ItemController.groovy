@@ -36,32 +36,53 @@ class ItemController {
             return
         }
 
-        if (itemInstance.hasErrors()) {
-            respond itemInstance.errors, view:'create'
-            return
-        }
-
         def file = request.getFile('file')
         String fn = file.originalFilename
+
         if(fn.empty || fn.equals("")) {
             flash.message = "Image cannot be empty."
             respond itemInstance.errors, view:'create'
             return
+
         } else if(!fn.endsWith(".jpg")){
             flash.message = "Image must be .jpg."
             respond itemInstance.errors, view:'create'
             return
+
         } else {
             def img = new Image()
             img.fileName = file.originalFilename
             img.fullPath = pathsService.getImageUploadPath() + file.originalFilename
             img.file = file.getBytes()
+            //nasetujes vazby ze strany image
             itemInstance.image = img
+            img.item = itemInstance
+            img.save(failOnError: true)
+
+
+            //TODO tohle musi byt az tady, je to kontrola, ze ten objekt Item ma vsechny potrebne parametry pred ulozenim,,, puvodne to bylo pred tim vytvorenim obrazku..
+            if (itemInstance.hasErrors()) {
+                log.error('Error in hasErrors')
+                itemInstance.errors.allErrors.each {
+                    log.error(it.toString())
+                }
+                respond itemInstance.errors, view:'create'
+                return
+            }
+
+            //ulozis hlavni entitu
+            itemInstance.save flush: true, failOnError: true
+
+            //nasetujes i vazby ze strany itemu
+            img.save(failOnError: true)
+
+
             //file.transferTo(new File(img.fullPath))
-            def ic = new ImageController()
-            ic.save(img)
-            itemInstance.save flush: true
+//            TOTO co je tohle?? controler by se instanciovat nemel... na entite jenom zavolas save, viz radek 55
+//            def ic = new ImageController()
+//            ic.save(img)
         }
+
 
         request.withFormat {
             form multipartForm {
